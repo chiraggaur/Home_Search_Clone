@@ -82,6 +82,7 @@ android {
         applicationId "com.tempapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'
         versionCode 1
         versionName "1.0"
     }
@@ -110,10 +111,19 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
     }
 }
+
+project.ext.react = [
+     enableHermes: true,  // or false if not using Hermes
+   entryFile: "index.ts",
+    bundleInRelease: true,
+    bundleCommand: "ram-bundle",  // Optional: improves startup performance
+    extraPackagerArgs: ["--indexed-ram-bundle"] // absolute path to your node executable
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
