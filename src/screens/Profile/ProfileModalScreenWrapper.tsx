@@ -13,7 +13,6 @@ export default function ProfileModalScreenWrapper() {
         onClose={() => setVisible(false)}
         onOpenAccount={() => {
           setVisible(false);
-          // Navigate to AccountModal screen or open another modal
         }}
       />
     </View>

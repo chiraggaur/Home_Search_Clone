@@ -13,8 +13,9 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {RootStackParamList} from '../utils/types';
+import {RootStackParamList} from '../../utils/types';
 import RNFS from 'react-native-fs';
+import {styles} from './voiceSearchStyles';
 
 const audioRecorderPlayer = new AudioRecorderPlayer();
 const DEEPGRAM_API_KEY = '6eea115463ead1884c76af7ba60c633fa0a26c3c';
@@ -280,76 +281,5 @@ function VoiceInputScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#202124'},
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 16,
-    paddingTop: 50,
-  },
-  backButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#303134',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  languageButton: {
-    width: 40,
-    height: 40,
-    marginTop: 5,
-    borderRadius: 20,
-    backgroundColor: '#303134',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 100,
-  },
-  transcript: {
-    color: '#9AA0A6',
-    fontSize: 16,
-    marginBottom: 40,
-    textAlign: 'center',
-    paddingHorizontal: 40,
-  },
-  dotsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    marginBottom: 40,
-  },
-  dot: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    marginHorizontal: 6,
-  },
-  blueDot: {backgroundColor: '#4285F4'},
-  redDot: {backgroundColor: '#EA4335'},
-  yellowDot: {backgroundColor: '#FBBC05'},
-  greenDot: {backgroundColor: '#34A853'},
-  searchSongButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#303134',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 20,
-  },
-  disabledButton: {opacity: 0.5},
-  searchSongText: {
-    color: '#e8eaed',
-    marginLeft: 8,
-    fontSize: 16,
-  },
-});
 
 export default VoiceInputScreen;

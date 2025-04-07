@@ -54,6 +54,7 @@ const sections: AccountSection[] = [
 
 export default function AccountModal({visible, onClose}: AccountModalProps) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   return (
     <Modal animationType="slide" visible={visible} onRequestClose={onClose}>
       <View style={styles.container}>
@@ -66,7 +67,7 @@ export default function AccountModal({visible, onClose}: AccountModalProps) {
 
         <ScrollView
           style={styles.content}
-          contentContainerStyle={{paddingBottom: 40}}
+          contentContainerStyle={styles.scrollContent} // Added separate style
           showsVerticalScrollIndicator={false}>
           <View style={styles.profileSection}>
             <Image

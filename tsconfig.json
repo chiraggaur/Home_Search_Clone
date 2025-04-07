@@ -10,5 +10,5 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": ["src", "index.ts", "index.tsx", "svg.d.ts", "App.tsx"]
+  "include": ["src", "index.ts", "index.tsx", "App.tsx", "svg.d.ts"]
 }

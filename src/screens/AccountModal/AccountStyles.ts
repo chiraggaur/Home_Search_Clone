@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../utils/CustomColors';
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -11,22 +10,25 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: colors.divider,
+    borderBottomColor: '#e0e0e0',
   },
   title: {
     fontSize: 18,
     fontWeight: '500',
-    color: colors.textPrimary,
     marginLeft: 24,
+    color: colors.textPrimary,
   },
   content: {
     flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 60,
   },
   profileSection: {
     alignItems: 'center',
     paddingVertical: 24,
     borderBottomWidth: 1,
-    borderBottomColor: colors.divider,
+    borderBottomColor: '#e0e0e0',
   },
   profileImage: {
     width: 80,
@@ -36,6 +38,21 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#ccc',
     backgroundColor: '#8ab4f8',
+  },
+  signOutContainer: {
+    marginTop: 32,
+    marginBottom: 40,
+    paddingHorizontal: 16,
+  },
+  signOutButton: {
+    backgroundColor: '#f1f3f4',
+    paddingVertical: 12,
+    borderRadius: 4,
+    alignItems: 'center',
+  },
+  signOutText: {
+    color: '#202124',
+    fontWeight: '500',
   },
   profileName: {
     fontSize: 20,
@@ -84,21 +101,5 @@ export const styles = StyleSheet.create({
   optionText: {
     fontSize: 16,
     color: colors.textPrimary,
-  },
-  signOutContainer: {
-    paddingVertical: 24,
-    alignItems: 'center',
-  },
-  signOutButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 24,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: colors.divider,
-  },
-  signOutText: {
-    fontSize: 14,
-    color: colors.textPrimary,
-    fontWeight: '500',
   },
 });

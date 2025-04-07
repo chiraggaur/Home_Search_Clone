@@ -6,6 +6,10 @@ buildscript {
         targetSdkVersion = 35
         ndkVersion = "27.1.12297006"
         kotlinVersion = "2.0.21"
+          visionCamera = [
+    enableFrameProcessors: false,
+    withWorklets: false, // ← this line is essential for worklets support
+  ]
     }
     repositories {
         google()
