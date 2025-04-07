@@ -29,11 +29,10 @@ export default StyleSheet.create({
     flex: 1,
   },
   lensIcon: {
-    width: 28,
-    height: 28,
+    width: 40,
+    height: 40,
     marginRight: 12,
-    marginLeft: 12,
-    tintColor: 'white',
+    marginLeft: 5,
   },
   avatar: {
     width: 32,
@@ -61,6 +60,12 @@ export default StyleSheet.create({
   cameraButton: {
     marginLeft: 12,
   },
+  quickLinkIconImage: {
+    width: 40,
+    height: 40,
+    marginBottom: 6,
+    borderRadius: 10,
+  },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -78,6 +83,11 @@ export default StyleSheet.create({
   searchIcons: {
     flexDirection: 'row',
     gap: 12,
+  },
+  micIcon: {
+    color: '#8ab4f8',
+    marginTop: 4,
+    fontSize: 28,
   },
   quickLinks: {
     flexDirection: 'row',
@@ -174,11 +184,10 @@ export default StyleSheet.create({
   navItem: {
     padding: 8,
   },
-  ////
   modalContainer: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
     backgroundColor: '#fff',
@@ -186,7 +195,7 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    elevation: 5, // Shadow effect
+    elevation: 5,
   },
   modalTitle: {
     fontSize: 20,

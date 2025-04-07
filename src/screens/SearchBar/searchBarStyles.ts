@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#202124',
-    paddingTop: Platform.OS === 'ios' ? 50 : 50,
+    paddingTop: Platform.OS === 'ios' ? 40 : 40,
   },
   searchHeader: {
     flexDirection: 'row',
@@ -23,9 +23,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 8,
   },
-  cameraButton: {
-    marginLeft: 12,
-  },
   recentSearchesHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -43,6 +40,16 @@ export const styles = StyleSheet.create({
   },
   recentSearchesList: {
     flex: 1,
+  },
+  lensIcon: {
+    width: 38,
+    height: 38,
+    marginRight: 22,
+    marginLeft: 12,
+  },
+  micIcon: {
+    color: '#8ab4f8',
+    fontSize: 28,
   },
   searchItem: {
     flexDirection: 'row',

@@ -10,4 +10,6 @@ export type RootStackParamList = {
   ProfileModal: undefined;
   AccountModal: undefined;
   ImageResults: {imageUri: string | null};
+  Login: undefined;
+  WebViewer: {url: string; title: string};
 };

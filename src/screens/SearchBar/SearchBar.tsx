@@ -228,6 +228,7 @@ import {
 import {RootStackParamList} from '../../utils/types';
 import {styles} from './searchBarStyles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import GoogleLensIcon from '../../assets/images/icons/lens_google_icon.svg';
 
 export default function SearchScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -290,13 +291,12 @@ export default function SearchScreen() {
           returnKeyType="search"
         />
         <TouchableOpacity onPress={() => navigation.navigate('VoiceInput')}>
-          <MaterialIcons name="mic" size={24} color="#8ab4f8" />
+          <MaterialIcons name="mic" style={styles.micIcon} />
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          onPress={() => navigation.navigate('OpenCamera')}
-          style={styles.cameraButton}>
-          <MaterialIcons name="camera-alt" size={24} color="#8ab4f8" />
-        </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigation.navigate('OpenCamera')}>
+          {/* <MaterialIcons name="camera-alt" size={24} color="#8ab4f8" /> */}
+          <GoogleLensIcon style={styles.lensIcon} />
+        </TouchableOpacity>
       </View>
 
       {/* Recent Searches */}

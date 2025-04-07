@@ -21,6 +21,8 @@ import OpenCameraScreen from '../screens/open-camera';
 import ProfileModalScreenWrapper from '../screens/Profile/ProfileModalScreenWrapper';
 import AccountModalScreenWrapper from '../screens/AccountModal/AccountModalScreenWrapper';
 import {RootStackParamList} from '../utils/types';
+import LoginScreen from '../screens/loginScreen';
+import WebViewer from '../screens/WebViewer';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,6 +43,7 @@ export default function Navigation() {
           <Stack.Screen name="VoiceInput" component={VoiceInputScreen} />
           <Stack.Screen name="SearchBar" component={SearchBarScreen} />
           <Stack.Screen name="OpenCamera" component={OpenCameraScreen} />
+          <Stack.Screen name="WebViewer" component={WebViewer} />
           <Stack.Screen
             name="ProfileModal"
             component={ProfileModalScreenWrapper}
@@ -49,6 +52,7 @@ export default function Navigation() {
             name="AccountModal"
             component={AccountModalScreenWrapper}
           />
+          <Stack.Screen name="Login" component={LoginScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

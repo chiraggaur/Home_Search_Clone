@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Modal, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {styles} from './profileModalStyles';
@@ -41,47 +48,49 @@ export default function ProfileModal({
       visible={visible}
       onRequestClose={onClose}>
       <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={onClose}>
-              <MaterialIcons name="close" size={24} color="#e8eaed" />
-            </TouchableOpacity>
-            <View style={{flex: 1, alignItems: 'center'}}>
-              <Text style={styles.title}>Google</Text>
+        <SafeAreaView style={styles.modalContent}>
+          <View style={styles.modalContent}>
+            <View style={styles.header}>
+              <TouchableOpacity onPress={onClose}>
+                <MaterialIcons name="close" size={24} color="#e8eaed" />
+              </TouchableOpacity>
+              <View style={{flex: 1, alignItems: 'center'}}>
+                <Text style={styles.title}>Google</Text>
+              </View>
             </View>
-          </View>
 
-          <ScrollView showsVerticalScrollIndicator={false}>
-            {menuItems.map((item, index) => (
-              <React.Fragment key={item.text}>
-                {index > 0 && index % 2 === 0 && (
-                  <View style={styles.divider} />
-                )}
-                <TouchableOpacity
-                  style={styles.option}
-                  onPress={item.action || onClose}>
-                  <View style={styles.optionContent}>
-                    <MaterialIcons
-                      name={item.icon as any}
-                      size={24}
-                      color="#5f6368"
-                    />
-                    <Text style={styles.optionText}>{item.text}</Text>
-                  </View>
-                  {item.hasChevron && (
-                    <Feather name="chevron-right" size={20} color="#5f6368" />
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {menuItems.map((item, index) => (
+                <React.Fragment key={item.text}>
+                  {index > 0 && index % 2 === 0 && (
+                    <View style={styles.divider} />
                   )}
-                </TouchableOpacity>
-              </React.Fragment>
-            ))}
+                  <TouchableOpacity
+                    style={styles.option}
+                    onPress={item.action || onClose}>
+                    <View style={styles.optionContent}>
+                      <MaterialIcons
+                        name={item.icon as any}
+                        size={24}
+                        color="#5f6368"
+                      />
+                      <Text style={styles.optionText}>{item.text}</Text>
+                    </View>
+                    {item.hasChevron && (
+                      <Feather name="chevron-right" size={20} color="#5f6368" />
+                    )}
+                  </TouchableOpacity>
+                </React.Fragment>
+              ))}
 
-            <View style={styles.footer}>
-              <Text style={styles.footerText}>
-                Privacy Policy • Terms of Service
-              </Text>
-            </View>
-          </ScrollView>
-        </View>
+              <View style={styles.footer}>
+                <Text style={styles.footerText}>
+                  Privacy Policy • Terms of Service
+                </Text>
+              </View>
+            </ScrollView>
+          </View>
+        </SafeAreaView>
       </View>
     </Modal>
   );

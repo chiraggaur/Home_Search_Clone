@@ -120,7 +120,7 @@ dependencies {
 
 project.ext.react = [
      enableHermes: true,  // or false if not using Hermes
-   entryFile: "index.ts",
+   entryFile: "index.js",
     bundleInRelease: true,
     bundleCommand: "ram-bundle",  // Optional: improves startup performance
     extraPackagerArgs: ["--indexed-ram-bundle"] // absolute path to your node executable

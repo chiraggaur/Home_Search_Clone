@@ -1,12 +1,18 @@
 import {useEffect, useState} from 'react';
-import {View, Text, Image, FlatList, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 import axios from 'axios';
 
 interface SearchResult {
   id: string;
   title: string;
   description: string;
-  source: string;
   thumbnail: string;
 }
 
@@ -18,7 +24,9 @@ export default function ImageResultsScreen() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://dummyjson.com/products?limit=10');
+        const response = await axios.get(
+          'https://dummyjson.com/products?limit=10',
+        );
         const products = response.data.products.map((product: any) => ({
           id: product.id.toString(),
           title: product.title,
@@ -28,7 +36,6 @@ export default function ImageResultsScreen() {
 
         setResults(products);
 
-        // Pick a random image from the products list
         if (products.length > 0) {
           const randomIndex = Math.floor(Math.random() * products.length);
           setRandomImage(products[randomIndex].thumbnail);
@@ -43,78 +50,117 @@ export default function ImageResultsScreen() {
     fetchProducts();
   }, []);
 
+  const renderItem = ({item}: {item: SearchResult}) => (
+    <View style={styles.card}>
+      <Image source={{uri: item.thumbnail}} style={styles.thumbnail} />
+      <View style={styles.textWrapper}>
+        <Text numberOfLines={1} style={styles.title}>
+          {item.title}
+        </Text>
+        <Text numberOfLines={2} style={styles.description}>
+          {item.description}
+        </Text>
+      </View>
+    </View>
+  );
+
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: 16,
-        backgroundColor: '#121212',
-      }}>
-      {/* Randomly Picked "Uploaded" Image */}
+    <View style={styles.container}>
+      {/* Uploaded Image Section */}
       {randomImage && (
-        <View style={{alignItems: 'center', marginBottom: 20}}>
-          <Image source={{uri: randomImage}} style={{width: 200, height: 200, borderRadius: 8}} />
-          <Text style={{marginTop: 8, color: '#fff', fontSize: 16}}>Dummy Image</Text>
+        <View style={styles.uploadedImageContainer}>
+          <Image source={{uri: randomImage}} style={styles.uploadedImage} />
+          <Text style={styles.uploadedImageLabel}>Uploaded Image</Text>
         </View>
       )}
 
-      {/* Visual Matches Section */}
-      <Text
-        style={{
-          fontSize: 18,
-          fontWeight: 'bold',
-          color: '#fff',
-          marginBottom: 10,
-        }}>
-        Visual matches
-      </Text>
+      <Text style={styles.heading}>Visual matches</Text>
 
       {loading ? (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={styles.loader}>
           <ActivityIndicator size="large" color="#00FF76" />
         </View>
       ) : (
         <FlatList
           data={results}
-          numColumns={2}
           keyExtractor={item => item.id}
-          renderItem={({item}) => (
-            <View
-              style={{
-                flex: 1,
-                margin: 8,
-                padding: 12,
-                backgroundColor: '#1e1e1e',
-                borderRadius: 8,
-                alignItems: 'center',
-              }}>
-              <Image
-                source={{uri: item.thumbnail}}
-                style={{width: 150, height: 150, borderRadius: 8}}
-              />
-              <Text
-                style={{
-                  marginTop: 6,
-                  fontSize: 14,
-                  fontWeight: 'bold',
-                  color: '#fff',
-                }}>
-                {item.title}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 12,
-                  color: 'gray',
-                  textAlign: 'center',
-                  marginTop: 4,
-                }}>
-                {item.description}
-              </Text>
-              <Text style={{fontSize: 12, color: '#0096FF', marginTop: 4}}>{item.source}</Text>
-            </View>
-          )}
+          renderItem={renderItem}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapper}
+          contentContainerStyle={styles.flatListContent}
+          showsVerticalScrollIndicator={false}
         />
       )}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 50,
+    backgroundColor: '#121212',
+  },
+  uploadedImageContainer: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  uploadedImage: {
+    width: 220,
+    height: 220,
+    borderRadius: 12,
+  },
+  uploadedImageLabel: {
+    marginTop: 10,
+    fontSize: 14,
+    color: '#bbb',
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#ffffff',
+    marginBottom: 16,
+    paddingLeft: 4,
+  },
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  flatListContent: {
+    paddingBottom: 20,
+  },
+  columnWrapper: {
+    justifyContent: 'space-between',
+  },
+  card: {
+    backgroundColor: '#1c1c1e',
+    borderRadius: 12,
+    marginBottom: 16,
+    width: '48%',
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  thumbnail: {
+    width: '100%',
+    height: 140,
+  },
+  textWrapper: {
+    padding: 10,
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  description: {
+    fontSize: 12,
+    color: '#aaa',
+  },
+});

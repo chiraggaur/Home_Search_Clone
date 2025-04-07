@@ -1,8 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Modal, ScrollView, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+  Image,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../utils/types';
 import {styles} from './AccountStyles';
 
 interface SectionItem {
@@ -45,6 +53,7 @@ const sections: AccountSection[] = [
 ];
 
 export default function AccountModal({visible, onClose}: AccountModalProps) {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <Modal animationType="slide" visible={visible} onRequestClose={onClose}>
       <View style={styles.container}>
@@ -55,13 +64,21 @@ export default function AccountModal({visible, onClose}: AccountModalProps) {
           <Text style={styles.title}>Google Account</Text>
         </View>
 
-        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={{paddingBottom: 40}}
+          showsVerticalScrollIndicator={false}>
           <View style={styles.profileSection}>
-            <Image source={{uri: 'https://placehold.co/80'}} style={styles.profileImage} />
+            <Image
+              source={{uri: 'https://placehold.co/80'}}
+              style={styles.profileImage}
+            />
             <Text style={styles.profileName}>User Name</Text>
-            <Text style={styles.profileEmail}>user@example.com</Text>
+            <Text style={styles.profileEmail}>user@google.com</Text>
             <TouchableOpacity style={styles.manageButton}>
-              <Text style={styles.manageButtonText}>Manage your Google Account</Text>
+              <Text style={styles.manageButtonText}>
+                Manage your Google Account
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -74,7 +91,11 @@ export default function AccountModal({visible, onClose}: AccountModalProps) {
                     {item.icon === 'md-location-outline' ? (
                       <Ionicons name={item.icon} size={24} color="#5f6368" />
                     ) : (
-                      <MaterialIcons name={item.icon} size={24} color="#5f6368" />
+                      <MaterialIcons
+                        name={item.icon}
+                        size={24}
+                        color="#5f6368"
+                      />
                     )}
                   </View>
                   <Text style={styles.optionText}>{item.text}</Text>
@@ -84,7 +105,9 @@ export default function AccountModal({visible, onClose}: AccountModalProps) {
           ))}
 
           <View style={styles.signOutContainer}>
-            <TouchableOpacity style={styles.signOutButton}>
+            <TouchableOpacity
+              style={styles.signOutButton}
+              onPress={() => navigation.navigate('Login')}>
               <Text style={styles.signOutText}>Sign out</Text>
             </TouchableOpacity>
           </View>

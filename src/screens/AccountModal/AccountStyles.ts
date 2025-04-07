@@ -33,6 +33,9 @@ export const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
     marginBottom: 12,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    backgroundColor: '#8ab4f8',
   },
   profileName: {
     fontSize: 20,
@@ -40,6 +43,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     marginBottom: 4,
   },
+  accountView: {},
   profileEmail: {
     fontSize: 14,
     color: colors.textSecondary,
@@ -49,7 +53,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 4,
-    backgroundColor: colors.blueLink,
+    backgroundColor: colors.surface,
   },
   manageButtonText: {
     fontSize: 14,
@@ -94,7 +98,7 @@ export const styles = StyleSheet.create({
   },
   signOutText: {
     fontSize: 14,
-    color: colors.textSecondary,
+    color: colors.textPrimary,
     fontWeight: '500',
   },
 });
